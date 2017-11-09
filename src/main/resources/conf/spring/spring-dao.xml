@@ -18,7 +18,7 @@
     <context:property-placeholder location="classpath:conf/jdbc.properties"/>
 
     <!--不扫描controller-->
-    <context:component-scan base-package="com.qhx" use-default-filters="false">
+    <context:component-scan base-package="com.qhx.finish.myshop" use-default-filters="false">
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
         <context:exclude-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice"/>
     </context:component-scan>
@@ -59,6 +59,8 @@
             <ref bean="sessionFactory"/>
         </property>
     </bean>
+
+    <context:component-scan base-package="com.qhx.finish.myshop.dao"/>
 
     <!--开启事务注解-->
     <tx:annotation-driven transaction-manager="transactionManager"/>

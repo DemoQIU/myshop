@@ -8,10 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -105,7 +102,7 @@ public class UserController {
      * @param map
      * @return
      */
-    @RequestMapping(value = "activeUser/{code}")
+    @RequestMapping(value = "/activeUser/{code}")
     public String activeUser(@PathVariable("code") String code , Map<String,Object> map){
         User user = userService.activeUser(code);
         if(null == user){
@@ -140,7 +137,7 @@ public class UserController {
      * @param map
      * @return
      */
-    @RequestMapping(value = "register" , method = RequestMethod.POST)
+    @RequestMapping(value = "/register" , method = RequestMethod.POST)
     public String register(@ModelAttribute("user") @Valid User user , BindingResult result ,
                            HttpSession session , String checkCode , Map<String , Object> map){
         //注册页面发生不知名错误,不使用BindingResult类的话就会直接报出异常,程序无法运行
@@ -168,9 +165,8 @@ public class UserController {
         //注册成功，往后台数据库保存用户，返回到首页
         userService.register(user);
         map.put("successRegister" , "successRegister");
-
+        List<User> list = new ArrayList<>();
+        list.iterator();
         return "index";
     }
-
-
 }
