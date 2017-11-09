@@ -1,7 +1,9 @@
 package com.qhx.finish.myshop.service.impl;
 
+import com.qhx.finish.myshop.dao.UserDao;
 import com.qhx.finish.myshop.model.User;
 import com.qhx.finish.myshop.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -9,10 +11,11 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class UserServiceImpl implements UserService{
+    @Autowired
+    private UserDao userDao;
 
-
-    public int checkLoginInfo(User user) {
-        return 0;
+    public User checkLoginInfo(User user) {
+        return null;
     }
 
     public void register(User user) {

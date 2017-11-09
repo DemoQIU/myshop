@@ -11,7 +11,7 @@ public interface UserService {
      * @param user
      * @return
      */
-    int checkLoginInfo(User user);
+    User checkLoginInfo(User user);
 
 
     /**
